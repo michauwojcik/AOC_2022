@@ -1,0 +1,7 @@
+# Extensions
+*.pyc
+
+# Folders
+__pycache__/
+data/
+
