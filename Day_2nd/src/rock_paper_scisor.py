@@ -27,23 +27,6 @@ ALL_GAMES =  {
     # LOSES
     "B X": 1, "C Y": 2, "A Z": 3
 }
-
-
-def prepare_rounds_list(file_path: str):
-    """
-    _summary_
-
-    Args:
-        file_path (str): a path to textfile with game's strategy 
-
-    Returns:
-        (list): each element represents round of the game 
-    """
-    
-    with open(file_path, "r") as f:
-        strategy_str = f.read()
-    
-    return strategy_str.split("\n")
     
     
 def get_points_whole_game(strategy: list):
