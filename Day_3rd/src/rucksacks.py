@@ -33,44 +33,45 @@ class RucksackManager:
         Calculates a particular rucksuck's value
         """
 
-        first_half, second_half = self.split_rucksack_in_half(self.rucksack)
-        rucksack_value = self.get_value_of_common_items(first_half, second_half)
+        common_items = self.get_common_items()
+        rucksack_value = self.get_value_of_common_items(common_items)
 
         return rucksack_value
 
 
-    def split_rucksack_in_half(self, rucksuck: str):
+    def get_common_items(self):
         """
         Splits a given *rucksuck* into two pieces of equal length
+        and extracts the common ones
 
         Args:
             rucksuck (str): all items in a certain rucksuck
 
         Returns:
-            (set, set): a rucksuck splitted in half 
+            (set): items which occurs in both compartments
         """
 
-        half_index = int(len(rucksuck) / 2) 
+        half_index = int(len(self.rucksack) / 2) 
 
-        first_half = {item for item in rucksuck[:half_index]}
-        second_half = {item for item in rucksuck[half_index:]}
+        first_half = {item for item in self.rucksack[:half_index]}
+        second_half = {item for item in self.rucksack[half_index:]}
 
-        return first_half, second_half
+        common_items = first_half & second_half
+
+        return common_items
 
     
-    def get_value_of_common_items(self, first_half: set, second_half: set):
+    def get_value_of_common_items(self, common_items: set):
         """
-        Sums the value of items which occur in both halfs
+        Sums the value of items which occur in both halves
 
         Args:
-            first_half (set): the rucksack's first half of items
-            second_half (set): the rucksack's second half of items
+            first_half (set): items which occurs in both compartments
 
         Returns:
             (int): common items' value
         """
 
-        common_items = first_half & second_half
         common_items_value = sum(self.item_dict[item] for item in common_items)
 
         return common_items_value
