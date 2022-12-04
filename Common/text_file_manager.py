@@ -10,6 +10,7 @@ class TextFileManager:
         self.content = self.get_file_content(file_path)
         self.lines = self.get_file_lines(file_path)
 
+
     def get_file_lines(self, file_name: str):
         """
         Returns lines of content as a list. 
@@ -42,6 +43,10 @@ class TextFileManager:
             file_content = f.read()
 
         return file_content
+
+    
+    def split_lines_into_sublists(self, sep=","):
+        return [el.split(sep) for el in self.lines]
 
 
 
