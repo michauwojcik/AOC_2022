@@ -1,4 +1,5 @@
 """
+    Program for the new crane - CraneMover9001
     Main program for finding crates on the top of each stack. 
 
     1. Loads the drawing from given path
@@ -9,21 +10,21 @@
 """
 
 import sys
-from crane import CraneDriver 
+from crane import Crane9001Driver 
 from drawing_parser import DrawingParser
 sys.path.append("../../Common")
 from text_file_manager import TextFileManager
 
-strategy_file_path = sys.argv[1]
+crates = sys.argv[1]
 
-def main(strategy_file_path):
+def main(crates):
     # Parsing input 
-    text = TextFileManager(strategy_file_path)
+    text = TextFileManager(crates)
     parser = DrawingParser(text.content)
     crates_in_stacks, procedure = parser.get_drawing_and_procedure()
 
     # Moving crane
-    crane = CraneDriver(procedure, crates_in_stacks)
+    crane = Crane9001Driver(procedure, crates_in_stacks)
     crane.perform_procedure()
     top_crates = crane.get_top_crates()
 
@@ -32,4 +33,4 @@ def main(strategy_file_path):
     
 
 if __name__ == "__main__":
-    main()
+    main(crates)
