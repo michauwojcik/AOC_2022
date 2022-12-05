@@ -58,3 +58,46 @@ class CraneDriver:
         return top_crates
 
 
+class Crane9001Driver(CraneDriver):
+    """
+    Simulates crane's moves according to given *procedure*.
+
+    Procedure is a sequnence of instructions where each instruction is given as follows: 
+    (number of crates to be moved, stack from which a crate will be taken, stack on which crate will be placed)
+
+    New crane can move more than one crate at a time.
+
+    """
+
+    def __init__(self, procedure, crates_in_stacks): 
+        self.procedure = procedure
+        self.crates_in_stacks = crates_in_stacks
+        
+
+    def perform_procedure(self):
+        """
+        Follows the instructions given in *procedure*.
+        For each instruction in procedures moves the demanded number of crates.
+        """
+
+        for i, instruction in enumerate(self.procedure):
+            print(self.crates_in_stacks)
+            self.move_many_crates(instruction)
+            
+    
+    def move_many_crates(self, instruction: tuple):
+        """
+        Performs one move. 
+        More than one crate could be moved.
+
+        Args:
+            instruction (tuple): (number_of_crates, old_stack, new_stack)
+        """
+
+        n_crates, old_stack, new_stack = instruction
+
+        crate_to_move = self.crates_in_stacks[old_stack][-n_crates:]
+        self.crates_in_stacks[old_stack] = self.crates_in_stacks[old_stack][:-n_crates]
+        self.crates_in_stacks[new_stack] += crate_to_move
+
+
