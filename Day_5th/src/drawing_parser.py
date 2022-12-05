@@ -73,7 +73,7 @@ class DrawingParser:
             procedure_line (str): one step from procedure
         """
 
-        return tuple(int(s) for s in procedure_line if s.isdigit())
+        return tuple(int(s) for s in procedure_line.split(" ") if s.isdigit())
 
 
     ### STACKS 
