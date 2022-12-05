@@ -1,3 +1,12 @@
+"""
+    Main program for find fully covered sections.
+
+    1. Loads the input (textfile) with sections ranges. Each line is pair of two elves' sections
+    2. Creates a list of pairs, where each pair is a tuple of sections (represented as sets) which will be compared.
+    3. Finds the sections which are fully covered by other elf's sections range
+
+"""
+
 import sys
 sys.path.append("../../Common")
 from text_file_manager import TextFileManager
