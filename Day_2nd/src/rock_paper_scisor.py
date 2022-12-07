@@ -27,6 +27,15 @@ ALL_GAMES =  {
     # LOSES
     "B X": 1, "C Y": 2, "A Z": 3
 }
+
+ALL_GAMES_TASK_2 =  {
+    # WINS:
+    "A Z": 8,  "B Z": 9,  "C Z": 7,
+    # DRAWS
+    "A Y": 4,  "B Y": 5,  "C Y": 6,
+    # LOSES
+    "A X": 3,  "B X": 1,  "C X": 2
+}
     
     
 def get_points_whole_game(strategy: list):
@@ -45,4 +54,20 @@ def get_points_whole_game(strategy: list):
     
     return sum(each_game_points)
     
+    
+def get_points_whole_game_second_version(strategy: list):
+    """
+    Counts points you earn in each game
+    and returns a sum of point.
+
+    Args:
+        strategy (list[str]): each element represents round of the game 
+
+    Returns:
+        int: sum of points gained in whole game 
+    """
+    
+    each_game_points = list(map(lambda x: ALL_GAMES_TASK_2[x], strategy))
+    
+    return sum(each_game_points)
     
